@@ -69,10 +69,12 @@ To apply this pipeline on a video rather than a single image, I broke the proces
 </video>
 
 
-### 2. Identify potential shortcomings with your current pipeline
+### 2. Identify potential shortcomings and possible improvements with your current pipeline
 
+There are a couple of shortcomings that still need to be resolved with the current pipeline.
 
+1. Automatic line rejection based on slopes: Currently the slope rejection value is hardcoded based on the video, and is determined based on trial and error. This can be changed to a smarter algorithm that looks through the slopes of all the lines and dynamically rejects outlier slopes based on a mean +/- 3 sigma rubric, so that only the relevant slopes are being included in the average slope computation. 
 
+2. Video Flicker: Currently the stitched video does not include any frame rate information from the original video. This can be improved by analysing the original video and frame rate breakdown to determine what the frame rate on the raw image is, and to use an equivalent frame rate when stitching the images back together.
 
-### 3. Suggest possible improvements to your pipeline
-
+3. The current algorithm seems to track one of the two lines (either right or left) better than the other becuase we are using the same slope rejection algorithm on both sides.
