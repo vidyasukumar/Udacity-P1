@@ -51,7 +51,7 @@ The goals / steps of this project are the following:
 7. Connecting lines to identify the lane: Once the lane lines are selected, I use a simple slope computation method to separate out the lines identifying the left lane and those identifying the right lane. I compute the slope of each line and depending on the direction of the slope, I sort it out into left lane lines vs right lane lines. Once this is completed, I compute the average slope of each line and take lowest intercept and a point slightly below the highest intercept to draw the final line.
 
 
-<img src="IntermediateImages/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
+<img src="test_images_output/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
 
 To apply this pipeline on a video rather than a single image, I broke the process out into the following steps - 
 
