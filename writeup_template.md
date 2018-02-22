@@ -48,7 +48,7 @@ The goals / steps of this project are the following:
 
 6. Applying a Hough transform: Once the relevant edges have been detected, I apply a Hough transform to identify lines in the image. Since we are trying to identify lane lines, the limiting factor for line length would be the inter-lane dashed lines, and the maximum gap between lines is determined by the distance between two lanes. For the purpose of the test images, I have used a minimum line length of 7 pixels and a maximum line gap of 10 pixels. The threshold for minimum number of votes to determine the presense of a line is 80. The distance resolution is in the order of 3 pixels. 
 
-<img src="test_images_output/HoughsolidWhiteCurve.jpg" width="480" alt="Combined Image" />
+<img src="IntermediateImages/HoughsolidWhiteCurve.jpg" width="480" alt="Combined Image" />
 
  
 7. Connecting lines to identify the lane: Once the lane lines are selected, I use a simple slope computation method to separate out the lines identifying the left lane and those identifying the right lane. I compute the slope of each line and depending on the direction of the slope, I sort it out into left lane lines vs right lane lines. Once this is completed, I compute the average slope of each line and take lowest intercept and a point slightly below the highest intercept to draw the final line.
