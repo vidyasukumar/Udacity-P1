@@ -33,24 +33,25 @@ The goals / steps of this project are the following:
  
  2. Convert the image to grayscale : I used the openCV cvtColor function to convert the image to gray scale. This allows us to use the gradient between two points to identify the edges in the image. 
 
-[image1]: ./IntermediateImages/GraysolidWhiteCurve.jpg "Grayscale"
+<img src="IntermediateImages/GraysolidWhiteCurve.jpg" width="480" alt="Combined Image" />
  
  3. Applying a Gaussian averaging filter: Before applying the edge detection algorithm, I apply a simple Gaussian filter with a small kernel size (5 pixels in this project) to remove the high frequency components in the image. This helps to refine the overall accuracy of the Canny edge detection mechanism. Note that the Canny edge detection mechanism also internally applies a Gaussian filter of the same kernel size.
  
  4. Applying the Canny edge detection mechanism: I use the openCV Canny function to identify the edges in the image. Since the threshold is an 8-bit number, I use a lower threshold limit of 50 and a high threshold limit of 150. The recommended ratio between the low and high threshold is in the order of 1:2 to 1:3, and using the high end of that limit allows the selection of only very steep gradients in the image. Given the two iterations of low pass Gaussian filtering to blur the image, this helps to generate more sharp edges in the image.
  
- [image2]: ./IntermediateImages/CannysolidWhiteCurve.jpg "Canny Edge Detected Output"
- 
+ <img src="IntermediateImages/CannysolidWhiteCurve.jpg" width="480" alt="Combined Image" />
+
+
  5. Applying an ROI filter: Once the edges have been detected in the image, I apply a ROI (region of interest) filter to mask out the edges that are outside the relative viewing area. For the purpose of this exercise, I am using a four point polygon to select the area of interest in the image. This allows rejection of edges that are on the edge of the image, while still being able to handle additional sections of the curved lanes that span more than a typical triangular viewing angle. 
- 
- [image3]: ./IntermediateImages/ROIsolidWhiteCurve.jpg "ROI filtered output"
- 
+  
+<img src="IntermediateImages/ROIsolidWhiteCurve.jpg" width="480" alt="Combined Image" />
+
 6. Applying a Hough transform: Once the relevant edges have been detected, I apply a Hough transform to identify lines in the image. Since we are trying to identify lane lines, the limiting factor for line length would be the inter-lane dashed lines, and the maximum gap between lines is determined by the distance between two lanes. For the purpose of the test images, I have used a minimum line length of 7 pixels and a maximum line gap of 10 pixels. The threshold for minimum number of votes to determine the presense of a line is 80. The distance resolution is in the order of 3 pixels. 
  
 7. Connecting lines to identify the lane: Once the lane lines are selected, I use a simple slope computation method to separate out the lines identifying the left lane and those identifying the right lane. I compute the slope of each line and depending on the direction of the slope, I sort it out into left lane lines vs right lane lines. Once this is completed, I compute the average slope of each line and take lowest intercept and a point slightly below the highest intercept to draw the final line.
 
-[image4]: ./test_images_output/solidWhiteCurve.jpg "Lane Mapped Output"
 
+<img src="IntermediateImages/solidWhiteCurve.jpg" width="480" alt="Combined Image" />
 
 To apply this pipeline on a video rather than a single image, I broke the process out into the following steps - 
 
