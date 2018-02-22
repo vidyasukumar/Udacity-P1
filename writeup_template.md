@@ -64,9 +64,8 @@ To apply this pipeline on a video rather than a single image, I broke the proces
 
 3. Recreating the video: After each frame had been updated, I stitched them together using the open CV VideoWriter codec to create a new video that overlaid the detected lane on top of the source video. 
 
-<video width="320" height="240" controls>
-  <source src="test_videos/challengeoutput.mp4" type="video/mp4">
-</video>
+
+<iframe width="420" height="315" src="test_videos/challengeoutput.mp4" frameborder="0" allowfullscreen></iframe>
 
 
 ### 2. Identify potential shortcomings and possible improvements with your current pipeline
@@ -77,4 +76,4 @@ There are a couple of shortcomings that still need to be resolved with the curre
 
 2. Video Flicker: Currently the stitched video does not include any frame rate information from the original video. This can be improved by analysing the original video and frame rate breakdown to determine what the frame rate on the raw image is, and to use an equivalent frame rate when stitching the images back together.
 
-3. The current algorithm seems to track one of the two lines (either right or left) better than the other becuase we are using the same slope rejection algorithm on both sides.
+3. The current algorithm seems to track one of the two lines (either right or left) better than the other becuase we are using the same slope rejection algorithm on both sides. This can be optimized depending on the viewing angle of the observer and the relative tilt of one line vs the other.
